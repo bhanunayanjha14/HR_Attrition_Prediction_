@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>RetainIQ | HR Employee Attrition Predictor</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <!-- Top Header Bar -->
+  <header class="top-nav">
+    <div class="nav-wrapper">
+      <div class="brand">
+        <span class="brand-badge">HR Analytics</span>
+        <span class="brand-title">Retain<strong>IQ</strong> Predictor</span>
+      </div>
+      <span class="model-status-chip">● API Connected</span>
+    </div>
+  </header>
+
+  <main class="dashboard-container">
+    <div class="main-grid">
+
+      <!-- Left: Compact Form Grid -->
+      <section class="form-card">
+        <form id="attritionForm" autocomplete="off">
+
+          <!-- Section 1: Demographics -->
+          <div class="box-section">
+            <div class="section-heading">
+              <span class="badge-num">1</span>
+              <h3>Personal & Demographics</h3>
+            </div>
+            <div class="fields-row grid-4">
+              <div class="input-item">
+                <label for="Age">Age (Yrs)</label>
+                <input type="number" id="Age" value="32" min="18" max="75" required />
+              </div>
+              <div class="input-item">
+                <label for="Gender">Gender</label>
+                <select id="Gender">
+                  <option value="1">Male</option>
+                  <option value="0">Female</option>
+                </select>
+              </div>
+              <div class="input-item">
+                <label for="MaritalStatus">Marital Status</label>
+                <select id="MaritalStatus">
+                  <option value="Status_Married" selected>Married</option>
+                  <option value="Status_Single">Single</option>
+                  <option value="Status_Divorced">Divorced</option>
+                </select>
+              </div>
+              <div class="input-item">
+                <label for="DistanceFromHome">Distance (KM)</label>
+                <input type="number" id="DistanceFromHome" value="7" min="1" max="150" required />
+              </div>
+            </div>
+          </div>
+
+          <!-- Section 2: Role & Organization -->
+          <div class="box-section">
+            <div class="section-heading">
+              <span class="badge-num">2</span>
+              <h3>Job Role & Organizational Profile</h3>
+            </div>
+            <div class="fields-row grid-4">
+              <div class="input-item span-2">
+                <label for="Department">Department</label>
+                <select id="Department">
+                  <option value="Department_Research & Development" selected>Research & Development</option>
+                  <option value="Department_Sales">Sales</option>
+                  <option value="Department_Human Resources">Human Resources</option>
+                </select>
+              </div>
+              <div class="input-item span-2">
+                <label for="Role">Job Role</label>
+                <select id="Role">
+                  <option value="Role_Research Scientist" selected>Research Scientist</option>
+                  <option value="Role_Laboratory Technician">Laboratory Technician</option>
+                  <option value="Role_Sales Executive">Sales Executive</option>
+                  <option value="Role_Sales Representative">Sales Representative</option>
+                  <option value="Role_Healthcare Representative">Healthcare Representative</option>
+                  <option value="Role_Manufacturing Director">Manufacturing Director</option>
+                  <option value="Role_Manager">Manager</option>
+                  <option value="Role_Research Director">Research Director</option>
+                  <option value="Role_Human Resources">Human Resources</option>
+                </select>
+              </div>
+              <div class="input-item">
+                <label for="JobLevel">Job Level (1-5)</label>
+                <input type="number" id="JobLevel" value="2" min="1" max="5" required />
+              </div>
+              <div class="input-item">
+                <label for="BusinessTravel">Travel Frequency</label>
+                <select id="BusinessTravel">
+                  <option value="Travel_Rarely" selected>Travel Rarely</option>
+                  <option value="Travel_Frequently">Travel Frequently</option>
+                  <option value="Non-Travel">Non-Travel</option>
+                </select>
+              </div>
+              <div class="input-item">
+                <label for="OverTime">OverTime</label>
+                <select id="OverTime">
+                  <option value="0" selected>No</option>
+                  <option value="1">Yes</option>
+                </select>
+              </div>
+              <div class="input-item">
+                <label for="StockOptionLevel">Stock Option (0-3)</label>
+                <input type="number" id="StockOptionLevel" value="1" min="0" max="3" required />
+              </div>
+              <div class="input-item span-2">
+                <label for="EducationField">Education Background</label>
+                <select id="EducationField">
+                  <option value="Education_Life Sciences" selected>Life Sciences</option>
+                  <option value="Education_Medical">Medical</option>
+                  <option value="Education_Marketing">Marketing</option>
+                  <option value="Education_Technical Degree">Technical Degree</option>
+                  <option value="Education_Human Resources">Human Resources</option>
+                  <option value="Education_Other">Other</option>
+                </select>
+              </div>
+              <div class="input-item span-2">
+                <label for="Education">Education Tier (1-5)</label>
+                <input type="number" id="Education" value="3" min="1" max="5" required />
+              </div>
+            </div>
+          </div>
+
+          <!-- Section 3: Compensation & Working Tenure -->
+          <div class="box-section">
+            <div class="section-heading">
+              <span class="badge-num">3</span>
+              <h3>Compensation & Career Tenure</h3>
+            </div>
+            <div class="fields-row grid-4">
+              <div class="input-item">
+                <label for="MonthlyIncome">Monthly Pay ($)</label>
+                <input type="number" id="MonthlyIncome" value="5200" min="500" max="150000" required />
+              </div>
+              <div class="input-item">
+                <label for="DailyRate">Daily Rate ($)</label>
+                <input type="number" id="DailyRate" value="790" min="50" max="5000" required />
+              </div>
+              <div class="input-item">
+                <label for="HourlyRate">Hourly Rate ($)</label>
+                <input type="number" id="HourlyRate" value="62" min="10" max="300" required />
+              </div>
+              <div class="input-item">
+                <label for="PercentSalaryHike">Hike (%)</label>
+                <input type="number" id="PercentSalaryHike" value="14" min="0" max="100" required />
+              </div>
+              <div class="input-item">
+                <label for="TotalWorkingYears">Total Exp (Yrs)</label>
+                <input type="number" id="TotalWorkingYears" value="8" min="0" max="60" required />
+              </div>
+              <div class="input-item">
+                <label for="YearsAtCompany">Yrs at Company</label>
+                <input type="number" id="YearsAtCompany" value="5" min="0" max="50" required />
+              </div>
+              <div class="input-item">
+                <label for="YearsInCurrentRole">Yrs in Role</label>
+                <input type="number" id="YearsInCurrentRole" value="3" min="0" max="50" required />
+              </div>
+              <div class="input-item">
+                <label for="YearsSinceLastPromotion">Yrs Last Promo</label>
+                <input type="number" id="YearsSinceLastPromotion" value="1" min="0" max="50" required />
+              </div>
+              <div class="input-item">
+                <label for="YearsWithCurrManager">Yrs With Mgr</label>
+                <input type="number" id="YearsWithCurrManager" value="3" min="0" max="50" required />
+              </div>
+              <div class="input-item">
+                <label for="NumCompaniesWorked">Prior Companies</label>
+                <input type="number" id="NumCompaniesWorked" value="2" min="0" max="25" required />
+              </div>
+              <div class="input-item">
+                <label for="TrainingTimesLastYear">Trainings Last Yr</label>
+                <input type="number" id="TrainingTimesLastYear" value="3" min="0" max="15" required />
+              </div>
+              <div class="input-item">
+                <label for="MonthlyRate">Monthly Rate ($)</label>
+                <input type="number" id="MonthlyRate" value="14200" min="500" max="100000" required />
+              </div>
+            </div>
+          </div>
+
+          <!-- Section 4: Satisfaction Indices -->
+          <div class="box-section">
+            <div class="section-heading">
+              <span class="badge-num">4</span>
+              <h3>Satisfaction & Engagement (1 to 4)</h3>
+            </div>
+            <div class="fields-row grid-3">
+              <div class="input-item">
+                <label for="EnvironmentSatisfaction">Environment Satisfaction</label>
+                <input type="number" id="EnvironmentSatisfaction" value="3" min="1" max="4" required />
+              </div>
+              <div class="input-item">
+                <label for="JobSatisfaction">Job Satisfaction</label>
+                <input type="number" id="JobSatisfaction" value="3" min="1" max="4" required />
+              </div>
+              <div class="input-item">
+                <label for="JobInvolvement">Job Involvement</label>
+                <input type="number" id="JobInvolvement" value="3" min="1" max="4" required />
+              </div>
+              <div class="input-item">
+                <label for="RelationshipSatisfaction">Relationship Satisfaction</label>
+                <input type="number" id="RelationshipSatisfaction" value="3" min="1" max="4" required />
+              </div>
+              <div class="input-item">
+                <label for="WorkLifeBalance">Work-Life Balance</label>
+                <input type="number" id="WorkLifeBalance" value="3" min="1" max="4" required />
+              </div>
+              <div class="input-item">
+                <label for="PerformanceRating">Performance Rating</label>
+                <input type="number" id="PerformanceRating" value="3" min="1" max="4" required />
+              </div>
+            </div>
+          </div>
+
+          <div class="form-actions">
+            <button type="submit" id="submitBtn" class="btn-predict">
+              <span>Predict Retention Risk</span>
+            </button>
+          </div>
+        </form>
+      </section>
+
+      <!-- Right: Assessment Result Sidebar -->
+      <aside class="sidebar-container">
+        <div class="result-card sticky-sidebar">
+          
+          <div class="result-header">
+            <div>
+              <h2>Assessment Result</h2>
+              <span class="sub-caption">HR turnover probability metric</span>
+            </div>
+            <!-- Refresh / Reset Button -->
+            <button type="button" id="resetBtn" class="btn-refresh" title="Reset Inputs & Prediction">
+              🔄 Reset
+            </button>
+          </div>
+
+          <!-- Initial Blank View -->
+          <div id="placeholderView" class="state-view">
+            <div class="icon-wrap">📋</div>
+            <p>Fill out the profile attributes and click <strong>Predict Retention Risk</strong> to view results.</p>
+          </div>
+
+          <!-- Loading Spinner -->
+          <div id="loading" class="state-view hidden">
+            <div class="spinner"></div>
+            <p>Evaluating employee attrition indicators...</p>
+          </div>
+
+          <!-- Prediction Result View (Held until reset) -->
+          <div id="resultContent" class="result-view hidden">
+            <div id="statusBadge" class="status-chip safe">LOW ATTRITION RISK</div>
+
+            <div class="kpi-box">
+              <span class="kpi-label">Likelihood to Resign</span>
+              <span id="leavePercentage" class="kpi-value">0%</span>
+            </div>
+
+            <div class="progress-wrap">
+              <div class="progress-info">
+                <span>Retention vs Churn Distribution</span>
+              </div>
+              <div class="track">
+                <div id="stayBar" class="bar-fill stay" style="width: 50%;"></div>
+                <div id="leaveBar" class="bar-fill leave" style="width: 50%;"></div>
+              </div>
+              <div class="legend-row">
+                <span><i class="dot stay-dot"></i> Stay: <strong id="stayProb">50%</strong></span>
+                <span><i class="dot leave-dot"></i> Leave: <strong id="leaveProb">50%</strong></span>
+              </div>
+            </div>
+
+            <div class="insight-container" id="insightBox"></div>
+          </div>
+
+          <div id="errorAlert" class="error-banner hidden"></div>
+        </div>
+      </aside>
+    </div>
+  </main>
+
+  <!-- Complete Clickable Bright Footer -->
+  <footer class="app-footer">
+    <div class="footer-wrap">
+      <div class="footer-grid">
+        
+        <div class="footer-brand">
+          <div class="brand">
+            <span class="brand-badge">HR Tech</span>
+            <span class="brand-title">Retain<strong>IQ</strong></span>
+          </div>
+          <p>Machine learning system designed to analyze and mitigate workforce turnover risk with granular data-driven modeling.</p>
+        </div>
+
+        <div class="footer-nav">
+          <h4>Direct Contact</h4>
+          <ul>
+            <li>
+              <span>📧</span>
+              <a href="mailto:bhanunayanjha2007@gmail.com">bhanunayanjha2007@gmail.com</a>
+            </li>
+            <li>
+              <span>📞</span>
+              <a href="tel:+919318464437">+91 9318464437</a>
+            </li>
+            <li>
+              <span>📍</span>
+              <a href="https://maps.google.com/?q=Delhi,India" target="_blank" rel="noopener noreferrer">Delhi, India</a>
+            </li>
+          </ul>
+        </div>
+
+        <div class="footer-nav">
+          <h4>Developer Socials</h4>
+          <ul>
+            <li>
+              <span>💼</span>
+              <a href="https://www.linkedin.com/in/bhanu-nayan-jha-873b25363/" target="_blank" rel="noopener noreferrer">LinkedIn Profile</a>
+            </li>
+            <li>
+              <span>💻</span>
+              <a href="https://github.com/bhanunayanjha14" target="_blank" rel="noopener noreferrer">GitHub Repository</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>All right reserved by <strong>Bhanu Nayan Jha</strong>.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
